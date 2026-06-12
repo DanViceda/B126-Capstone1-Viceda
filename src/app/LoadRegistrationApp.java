@@ -50,31 +50,31 @@ public class LoadRegistrationApp {
             System.out.println("[5] GIGA GAMES");
             System.out.println("[6] Exit");
             System.out.print("Choice: ");
-            int choice = sc.nextInt();
+            char choice = sc.next().trim().charAt(0); // applied some String method
             sc.nextLine();
 
             switch (choice) {
-                case 1:
+                case '1':
                     showPromoMenu("GIGA VIDEO 50", "4GB", "3 days", 50,
                                   "GIGA VIDEO 99", "9GB", "7 days", 99);
                     break;
-                case 2:
+                case '2':
                     showPromoMenu("GIGA VIDEO+ 50", "5GB video + 1GB open access", "3 days", 50,
                                   "GIGA VIDEO+ 99", "10GB video + 2GB open access", "7 days", 99);
                     break;
-                case 3:
+                case '3':
                     showPromoMenu("ALL NET 50", "2GB open access", "3 days", 50,
                                   "ALL NET 99", "6GB open access", "3 days", 99);
                     break;
-                case 4:
+                case '4':
                     showPromoMenu("GIGA STORIES 50", "4GB", "3 days", 50,
                                   "GIGA STORIES 99", "9GB", "7 days", 99);
                     break;
-                case 5:
+                case '5':
                     showPromoMenu("GIGA GAMES 50", "4GB for gaming", "3 days", 50,
                                   "GIGA GAMES 99", "9GB for gaming", "7 days", 99);
                     break;
-                case 6:
+                case '6':
                     askExit();
                     break;
                 default:
@@ -171,6 +171,7 @@ public class LoadRegistrationApp {
         switch (ans) {
             case 1:
                 System.out.println("Cancelled.");
+                clearScreen();
                 return true;
             case 2:
                 System.out.println("Going back...");
