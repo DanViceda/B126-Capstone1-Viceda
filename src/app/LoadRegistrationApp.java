@@ -11,8 +11,11 @@ package app;
  * EXERCISE 11
  * 1. load reference link: https://www.teknogadyet.com/2019/08/smart-prepaid-text-call-internet-promos.html
  * 
+ * Might change my comments in the code in the future for better clarity, just stay it like that to understand the flow and concept of code
  */
 
+
+//TO DO TOM: CLEAN CODE READABILITY
 import java.util.Scanner;
 
 public class LoadRegistrationApp {
@@ -22,21 +25,12 @@ public class LoadRegistrationApp {
 
     public static void main(String[] args) {
 
-        System.out.println("==========================");
-        System.out.println("      LOAD SERVICES       ");
-        System.out.println("==========================");
-        System.out.print("Enter USSD Code (*123#): ");
-        String code = sc.nextLine().trim();
-
-        if (!code.equals("*123#")) {
-            System.out.println("Invalid USSD Code!");
-            System.exit(0);
-        }
+        enterUssdCode();
 
         // The app will keep running and showing the main menu unless they exit
-        boolean running = true;
+        //boolean running = true; lol didn't notice this
 
-        while (running) {
+        while (true) {
             try {
                 System.out.println("\n==========================");
                 System.out.println("      MAIN MENU           ");
@@ -95,6 +89,43 @@ public class LoadRegistrationApp {
         }
     }
 
+    static void enterUssdCode() {
+
+        while (true) {
+
+            System.out.println("==========================");
+            System.out.println("      LOAD SERVICES       ");
+            System.out.println("==========================\n");
+
+            System.out.print("Enter USSD Code (*123#): ");
+
+            try {
+                String code = sc.nextLine().trim();
+
+                if (code.isEmpty()) {
+                    clearScreen();
+                    System.out.println("--------------------------------------------------");
+                    System.out.println("USSD can't be empty!");
+                    System.out.println("--------------------------------------------------\n");
+
+                } else if (!code.equals("*123#")) {
+                    clearScreen();
+                    System.out.println("--------------------------------------------------");
+                    System.out.println("Invalid USSD Code!");
+                    System.out.println("--------------------------------------------------\n");
+
+                } else {
+                    clearScreen();
+                    break;
+                }
+
+            } catch (Exception e) {
+                System.out.println("Input error detected. Please try again."); // para sa input error o kapag na interrupt yung program (ex : Ctrl + C sa cmd)
+                sc.nextLine();
+            }
+        }
+    }
+
     //method applied sample in previous topic
     static void showPromoMenu(String loadName1, String dataAllowance1, String validity1, int price1,
                                String loadName2, String dataAllowance2, String validity2, int price2) {
@@ -115,6 +146,7 @@ public class LoadRegistrationApp {
                 // The arguments passed to showDetails() come from the parameters of showPromoMenu()
                 // The data types and order of the arguments must match the parameters of showDetails();
                 // otherwise, a compile-time error may occur.
+                
                 switch (pick) {
                     case 1:
                         showDetails(loadName1, dataAllowance1, validity1, price1);
@@ -147,7 +179,7 @@ public class LoadRegistrationApp {
 
     static void showDetails(String name, String data, String validity, int price) {
         boolean back = false;
-        clearScreen();
+        clearScreen();      
         while (!back) {
             try {
                 System.out.println("\n=======================================");
@@ -168,7 +200,7 @@ public class LoadRegistrationApp {
                             moneyBalance -= price;
                             clearScreen();
                             System.out.println("\nYou're now subscribed to " + name + ". Enjoy!");
-                            System.out.println("Remaining Balance: P" + moneyBalance);
+                            System.out.printf("Remaining Balance: P%.2f\n", moneyBalance); // copied from my previous excercise good to use if want two decimal to be displayed
                         } else {
                             clearScreen();
                             System.out.println("\nInsufficient balance! Please top up to enjoy the benifits of the promos!");
