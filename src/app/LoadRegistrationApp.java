@@ -17,8 +17,8 @@ import java.util.Scanner;
 
 public class LoadRegistrationApp {
 
-    static Scanner sc = new Scanner(System.in);
-    static double balance = 500.03;
+    static Scanner sc = new Scanner(System.in); // the scanner now can be accessible in any class
+    static double moneyBalance = 500.03;
 
     public static void main(String[] args) {
 
@@ -33,13 +33,15 @@ public class LoadRegistrationApp {
             System.exit(0);
         }
 
+        
+        // The app will keep running and showing the main menu unless they exit
         boolean running = true;
 
         while (running) {
             System.out.println("\n==========================");
             System.out.println("      MAIN MENU           ");
             System.out.println("==========================");
-            System.out.println("Balance: P" + balance);
+            System.out.println("Balance: P" + moneyBalance);
             System.out.println("--------------------------");
             System.out.println("[1] GIGA VIDEO");
             System.out.println("[2] GIGA VIDEO+");
@@ -81,8 +83,9 @@ public class LoadRegistrationApp {
         }
     }
 
-    static void showPromoMenu(String name1, String data1, String val1, int price1,
-                               String name2, String data2, String val2, int price2) {
+    //method applied sample in previous topic
+    static void showPromoMenu(String loadName1, String dataAllowance1, String validity1, int price1,
+                               String loadName2, String dataAllowance2, String validity2, int price2) {
         boolean back = false;
 
         while (!back) {
@@ -90,23 +93,31 @@ public class LoadRegistrationApp {
             System.out.println("\n==========================");
             System.out.println("      SELECT LOAD         ");
             System.out.println("==========================");
-            System.out.println("[1] " + name1 + " - P" + price1);
-            System.out.println("[2] " + name2 + " - P" + price2);
+            System.out.println("[1] " + loadName1 + " - P" + price1);
+            System.out.println("[2] " + loadName2 + " - P" + price2);
             System.out.println("[3] Go Back");
             System.out.print("Choice: ");
             int pick = sc.nextInt();
             sc.nextLine();
 
-            if (pick == 1) {
-                showDetails(name1, data1, val1, price1);
-                back = true;
-            } else if (pick == 2) {
-                showDetails(name2, data2, val2, price2);
-                back = true;
-            } else if (pick == 3) {
-                back = true;
-            } else {
-                System.out.println("Invalid choice!");
+            // The arguments passed to showDetails() come from the parameters of showPromoMenu()
+            // The data types and order of the arguments must match the parameters of showDetails();
+            // otherwise, a compile-time error may occur.
+            switch (pick) {
+                case 1:
+                    showDetails(loadName1, dataAllowance1, validity1, price1);
+                    back = true;
+                    break;
+                case 2:
+                    showDetails(loadName2, dataAllowance2, validity2, price2);
+                    back = true;
+                    break;
+                case 3:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+                    break;
             }
         }
     }
@@ -128,24 +139,24 @@ public class LoadRegistrationApp {
             int confirm = sc.nextInt();
             sc.nextLine();
 
-            if (confirm == 1) {
-                if (balance >= price) {
-                    balance -= price;
-                    System.out.println("\nYou're now subscribed to " + name + ". Enjoy!");
-                    System.out.println("Remaining Balance: P" + balance);
-                } else {
-                    System.out.println("\nInsufficient balance! Please top up to enjoy the benifits of the promos!");
-                }
-                back = true;
-
-            } else if (confirm == 2) {
-                boolean cancelled = askCancel();
-                if (cancelled) {
-                    back = true;
-                }
-
-            } else {
-                System.out.println("Invalid choice!");
+            switch (confirm) {
+                case 1:
+                    if (moneyBalance >= price) {
+                        moneyBalance -= price;
+                        System.out.println("\nYou're now subscribed to " + name + ". Enjoy!");
+                        System.out.println("Remaining Balance: P" + moneyBalance);
+                    } else {
+                        System.out.println("\nInsufficient balance! Please top up to enjoy the benifits of the promos!");
+                    }   back = true;
+                    break;
+                case 2:
+                    boolean cancelled = askCancel();
+                    if (cancelled) {
+                        back = true;
+                    }   break;
+                default:
+                    System.out.println("Invalid choice!");
+                    break;
             }
         }
     }
@@ -157,15 +168,16 @@ public class LoadRegistrationApp {
         int ans = sc.nextInt();
         sc.nextLine();
 
-        if (ans == 1) {
-            System.out.println("Cancelled.");
-            return true;
-        } else if (ans == 2) {
-            System.out.println("Going back...");
-            return false;
-        } else {
-            System.out.println("Invalid! Going back...");
-            return false;
+        switch (ans) {
+            case 1:
+                System.out.println("Cancelled.");
+                return true;
+            case 2:
+                System.out.println("Going back...");
+                return false;
+            default:
+                System.out.println("Invalid! Going back...");
+                return false;
         }
     }
 
@@ -176,19 +188,22 @@ public class LoadRegistrationApp {
         int ans = sc.nextInt();
         sc.nextLine();
 
-        if (ans == 1) {
-            System.out.println("\n==========================");
-            System.out.println("   Thank you! Goodbye!    ");
-            System.out.println("==========================");
-            System.exit(0);
-        } else if (ans == 2) {
-            System.out.println("Going back...");
-        } else {
-            System.out.println("Invalid! Going back...");
+        switch (ans) {
+            case 1:
+                System.out.println("\n==========================");
+                System.out.println("   Thank you! Goodbye!    ");
+                System.out.println("==========================");
+                System.exit(0);
+            case 2:
+                System.out.println("Going back...");
+                break;
+            default:
+                System.out.println("Invalid! Going back...");
+                break;
         }
     }
     
-    
+    //from the previous discussion it Clears the console screen using ANSI escape codes
    public static void clearScreen(){
        System.out.println("\033[H\033[2J");
        System.out.flush();
