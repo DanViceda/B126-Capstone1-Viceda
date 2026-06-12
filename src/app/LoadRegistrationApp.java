@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class LoadRegistrationApp {
 
     static Scanner sc = new Scanner(System.in);
-    static double balance = 150.03;
+    static double balance = 500.03;
 
     public static void main(String[] args) {
 
@@ -36,7 +36,6 @@ public class LoadRegistrationApp {
         boolean running = true;
 
         while (running) {
-            clearScreen();
             System.out.println("\n==========================");
             System.out.println("      MAIN MENU           ");
             System.out.println("==========================");
@@ -117,12 +116,12 @@ public class LoadRegistrationApp {
 
         while (!back) {
             clearScreen();
-            System.out.println("\n==========================");
+            System.out.println("\n=======================================");
             System.out.println("Promo    : " + name);
             System.out.println("Data     : " + data);
             System.out.println("Validity : " + validity);
             System.out.println("Price    : P" + price);
-            System.out.println("--------------------------");
+            System.out.println("----------------------------------------");
             System.out.println("[1] Buy");
             System.out.println("[2] Cancel");
             System.out.print("Choice: ");
@@ -132,10 +131,10 @@ public class LoadRegistrationApp {
             if (confirm == 1) {
                 if (balance >= price) {
                     balance -= price;
-                    System.out.println("\nSubscribed to " + name + "!");
+                    System.out.println("\nYou're now subscribed to " + name + ". Enjoy!");
                     System.out.println("Remaining Balance: P" + balance);
                 } else {
-                    System.out.println("\nInsufficient balance!");
+                    System.out.println("\nInsufficient balance! Please top up to enjoy the benifits of the promos!");
                 }
                 back = true;
 
