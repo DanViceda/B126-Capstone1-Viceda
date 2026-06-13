@@ -14,7 +14,6 @@ package app;
  * Might change my comments in the code in the future for better clarity, just stay it like that to understand the flow and concept of code
  */
 
-
 //TO DO TOM: CLEAN CODE READABILITY
 import java.util.Scanner;
 
@@ -28,9 +27,8 @@ public class LoadRegistrationApp {
         enterUssdCode();
 
         // The app will keep running and showing the main menu unless they exit
-        //boolean running = true; lol didn't notice this
-
         while (true) {
+            
             try {
                 System.out.println("\n==========================");
                 System.out.println("      MAIN MENU           ");
@@ -43,6 +41,7 @@ public class LoadRegistrationApp {
                 System.out.println("[4] GIGA IG+FB+TikTok");
                 System.out.println("[5] GIGA GAMES");
                 System.out.println("[6] Exit");
+                
                 System.out.print("Choice: ");
                 int choice = sc.nextInt(); //  i think its better to use int here for me to use try catch
                 sc.nextLine();
@@ -129,8 +128,10 @@ public class LoadRegistrationApp {
     //method applied sample in previous topic
     static void showPromoMenu(String loadName1, String dataAllowance1, String validity1, int price1,
                                String loadName2, String dataAllowance2, String validity2, int price2) {
+        
         boolean back = false;
         clearScreen();
+        
         while (!back) {
             try {
                 System.out.println("\n==========================");
@@ -139,6 +140,7 @@ public class LoadRegistrationApp {
                 System.out.println("[1] " + loadName1 + " - P" + price1);
                 System.out.println("[2] " + loadName2 + " - P" + price2);
                 System.out.println("[3] Go Back");
+                
                 System.out.print("Choice: ");
                 int pick = sc.nextInt();
                 sc.nextLine();
@@ -167,6 +169,7 @@ public class LoadRegistrationApp {
                         System.out.println("-----------------------------------------------\n");
                         break;
                 }
+                
             } catch (Exception e) {
                 clearScreen();
                 System.out.println("-----------------------------------------------");
@@ -178,9 +181,12 @@ public class LoadRegistrationApp {
     }
 
     static void showDetails(String name, String data, String validity, int price) {
+        
         boolean back = false;
-        clearScreen();      
+        clearScreen();
+        
         while (!back) {
+            
             try {
                 System.out.println("\n=======================================");
                 System.out.println("Promo    : " + name);
@@ -190,7 +196,8 @@ public class LoadRegistrationApp {
                 System.out.println("----------------------------------------");
                 System.out.println("[1] Buy");
                 System.out.println("[2] Cancel");
-                System.out.print("Choice: ");
+                
+                System.out.print("Choice: ");      
                 int confirm = sc.nextInt();
                 sc.nextLine();
 
@@ -218,6 +225,7 @@ public class LoadRegistrationApp {
                         System.out.println("-----------------------------------------------\n");
                         break;
                 }
+                
             } catch (Exception e) {
                 clearScreen();
                 System.out.println("-----------------------------------------------");
@@ -230,7 +238,9 @@ public class LoadRegistrationApp {
 
     static boolean askCancel() {
         clearScreen();
+        
         try {
+            
             System.out.println("\n[1] Yes, Cancel");
             System.out.println("[2] No, Go Back");
             System.out.print("Choice: ");
@@ -251,6 +261,7 @@ public class LoadRegistrationApp {
                     System.out.println("Invalid! Going back...");
                     return false;
             }
+            
         } catch (Exception e) {
             clearScreen();
             System.out.println("-----------------------------------------------");
@@ -262,9 +273,11 @@ public class LoadRegistrationApp {
     }
 
     static void askExit() {
+        
         try {
             System.out.println("\n[1] Yes, Exit");
             System.out.println("[2] No, Go Back");
+            
             System.out.print("Choice: ");
             int ans = sc.nextInt();
             sc.nextLine();
@@ -286,6 +299,7 @@ public class LoadRegistrationApp {
                     System.out.println("-----------------------------------------------\n");
                     break;
             }
+            
         } catch (Exception e) {
             clearScreen();
             System.out.println("-----------------------------------------------");
