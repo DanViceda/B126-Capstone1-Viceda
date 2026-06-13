@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package app;
 /**
- *
- * @author danvicedaa
- * EXERCISE 11
+ * EXERCISE 11 Enhancements
  * 1. load reference link: https://www.teknogadyet.com/2019/08/smart-prepaid-text-call-internet-promos.html
- * 
  * Might change my comments in the code in the future for better clarity, just stay it like that to understand the flow and concept of code
  */
 
-//TO DO TOM: CLEAN CODE READABILITY
 import java.util.Scanner;
 
 public class LoadRegistrationApp {
@@ -43,7 +33,7 @@ public class LoadRegistrationApp {
                 System.out.println("[6] Exit");
                 
                 System.out.print("Choice: ");
-                int choice = sc.nextInt(); //  i think its better to use int here for me to use try catch
+                int choice = sc.nextInt(); 
                 sc.nextLine();
 
                 switch (choice) {
@@ -88,6 +78,7 @@ public class LoadRegistrationApp {
         }
     }
 
+    //starting point of the app
     static void enterUssdCode() {
 
         while (true) {
@@ -145,9 +136,9 @@ public class LoadRegistrationApp {
                 int pick = sc.nextInt();
                 sc.nextLine();
 
-                // The arguments passed to showDetails() come from the parameters of showPromoMenu()
-                // The data types and order of the arguments must match the parameters of showDetails();
-                // otherwise, a compile-time error may occur.
+                /* The arguments passed to showDetails() come from the parameters of showPromoMenu()
+                The data types and order of the arguments must match the parameters of showDetails();
+               otherwise, a compile-time error may occur. */ 
                 
                 switch (pick) {
                     case 1:
